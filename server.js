@@ -31,6 +31,7 @@ app.get('/', function (req, res) {
     var html = fs.readFileSync('index.html');
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end(html);
+
 });
 
 app.get('/getTweets', function (req, res) {
