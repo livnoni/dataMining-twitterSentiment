@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis Application</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+
+<div>
+    <p align="right">Data Mining - Final Project</p>
+    <P>
+        Welcome to the <b>Twitter Sentiment Analysis app.</b> <br>
+        What phrase would you like to analzye? (e.g: Trump, Kim, Justin ...)
+    </P>
+
+    <textarea name="message" rows="1" cols="20">trump</textarea> <br><br>
+    <p>
+        Num of tweeters to scan: <br><br>
+        <input type="number" value=500>
+    </p> <br>
+
+    <button> Send</button>
+
+    <div>
+        <h2 id="score">tweets:</h2>
+    </div>
+</div>
+
+
+<textarea id="tweets" rows="25" cols="150" placeholder="Here the tweets are going to be seen..."></textarea> <br><br>
+
+
+<script>
+    var interval = false;
+
+    $(document).ready(function () {
+        $("button").click(function () {
+            interval = true;
+            $("#score").html('tweets:');
+            $("#tweets").val('');
+            var text = $("textarea").val();
+            var numOfTweets = $("input").val();
+            console.log(`text = ${text}, numOfTweets =${numOfTweets}`);
+            if (text.length != 0) {
+                $.post("http://localhost:3000", {phrase: text, numOfTweets: numOfTweets}, function (data) {
+                    if (data.includes("total")) {
+                        $("#score").html(data);
+                        interval = false;
+                    } else {
+                        alert(data)
+                    }
+                });
+            } else {
+                alert("please fill the phrase and then click on send button");
+            }
+        });
+    });
+
+
+    setInterval(function () {
+        if (interval) {
+            $.get("http://localhost:3000/getTweets", function (data) {
+                console.log("Data: " + JSON.stringify(data));
+                $("#tweets").val($("#tweets").val() + data);
+            });
+        }
+    }, 100);
+
+</script>
+
+</body>
+</html>
