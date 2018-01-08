@@ -66,8 +66,9 @@ app.post('/', urlencodedParser, function (req, res) {
                         sentiment(data.text, function (err, result) {
                             tweetCount++;
                             tweetTotalSentiment += result.score;
+                            tweetsData += "Tweet #" + tweetCount + ":  " + data.text + "[ rank: "+result.score+" ]\n";
+
                         });
-                        tweetsData += "Tweet #" + tweetCount + ":  " + data.text + "\n";
                         console.log("tweetTotalSentiment =" + tweetTotalSentiment);
                     }
 

@@ -86,7 +86,6 @@
 
     $(document).ready(function () {
         $('#loader').css('opacity', '0');
-
         $("button").click(function () {
             interval = true;
             $("#score").html('tweets:');
@@ -116,6 +115,8 @@
         if (interval) {
             $.get("http://localhost:3000/getTweets", function (data) {
                 console.log("Data: " + JSON.stringify(data));
+                var score = data.split("<--score-->")[0];
+                console.log("score="+score)
                 $("#tweets").val($("#tweets").val() + data);
             });
         }
