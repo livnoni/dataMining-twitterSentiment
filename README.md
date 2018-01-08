@@ -1,13 +1,24 @@
 # Twitter Sentiment
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+![Ariel](https://github.com/livnoni/dataMining-twitterSentiment/blob/master/gitHub_pics/logo.png)
+
+
 
 Twitter sentiment is a web application that  examines the sentiment measure of a particular expression.
 
 
-  - Type some name of famous peron on the left
+  - Type some name of famous peron on the left 
+  
+  ![Ariel](https://github.com/livnoni/dataMining-twitterSentiment/blob/master/gitHub_pics/person.PNG)
+
   - Select how many tweets you want to scan on the button
+  
+    ![Ariel](https://github.com/livnoni/dataMining-twitterSentiment/blob/master/gitHub_pics/tweetsNum.PNG)
+
   - click on the 'run' button
+  
+    ![Ariel](https://github.com/livnoni/dataMining-twitterSentiment/blob/master/gitHub_pics/run.PNG)
+
   - Wait until you receive the Sentient Index of that person !
 
 ### Tech
@@ -61,6 +72,14 @@ Ariel University
 
 
 **Free Software, Hell Yeah!**
+
+## Screenshot:
+![Ariel](https://github.com/livnoni/dataMining-twitterSentiment/blob/master/gitHub_pics/screenShot1.PNG)
+
+### The ouput:
+
+![Ariel](https://github.com/livnoni/dataMining-twitterSentiment/blob/master/gitHub_pics/screenShot2.PNG)
+
 
 [ntwitter]: <https://www.npmjs.com/package/ntwitter>
 [node.js]: <http://nodejs.org>
