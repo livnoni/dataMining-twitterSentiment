@@ -18,13 +18,8 @@ var inAction = false;
 var phrase;
 
 
-// Create your own app at: https://dev.twitter.com/apps
-var tweeter = new ntwitter({
-    consumer_key: '2tsC7Dd8TPOfHk0s9dowJ0pQk',
-    consumer_secret: '4nbxI4AVzgVbGZpXlU6hL4ZvM2IfapO1ANDTCjPJbr9xitzsMC',
-    access_token_key: '897796200526733312-tA0pnAt63QTNJNcwOPKFwc3NIeMdFtV',
-    access_token_secret: 'JrwOTMJuYfdRGoF1YmbcAbt1M4LTuVKNErDQedhz5lEcn'
-});
+var client = fs.readFileSync('configure.json');
+var tweeter = new ntwitter(JSON.parse(client).twitterAccount);
 
 app.get('/', function (req, res) {
     console.log('GET /');
