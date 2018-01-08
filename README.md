@@ -47,8 +47,6 @@ node server.js
 
 Browse to: http://localhost:3000/ on your favorite browser
 
-For production environments...
-
 ### additional requirements
 
 Twitter Sentiment is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
