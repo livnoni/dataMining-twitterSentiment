@@ -59,8 +59,6 @@ app.post('/', urlencodedParser, function (req, res) {
                 'track': phrase
             }, function (stream) {
                 stream.on('data', function (data) {
-                    tweetCount++;
-
                     if (data.lang === 'en') {
                         console.log("Tweet #" + tweetCount + ":  " + data.text);
                         sentiment(data.text, function (err, result) {
