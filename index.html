@@ -69,6 +69,7 @@
             <h2 id="score">tweets:</h2>
         </div>
 
+
     </div>
 
     <div class="loader" id="loader"></div>
@@ -94,12 +95,12 @@
             var numOfTweets = $("input").val();
             console.log(`text = ${text}, numOfTweets =${numOfTweets}`);
             if (text.length != 0) {
-                $.post("http://localhost:3000", {phrase: text, numOfTweets: numOfTweets}, function (data) {
-                    if (data.includes("total")) {
-                        $("#score").html(data);
-                        interval = false;
-                        $('#loader').css('opacity', '0');
-                    } else {
+                $.post("http://localhost:3000" ,{phrase: text, numOfTweets: numOfTweets}, function (data) {
+                    if (data.includes("already scan")) {
+//                        $("#score").html(data);
+//                        interval = false;
+//                        $('#loader').css('opacity', '0');
+//                    } else {
                         alert(data)
                     }
                 });
@@ -114,9 +115,15 @@
         if (interval) {
             $.get("http://localhost:3000/getTweets", function (data) {
                 console.log("Data: " + JSON.stringify(data));
-                var score = data.split("<--score-->")[0];
-                console.log("score="+score)
-                $("#tweets").val($("#tweets").val() + data);
+                if(data.includes("finishScan")){
+                    $("#score").html(data);
+                    interval = false;
+                    $('#loader').css('opacity', '0');
+                }else{
+                    var score = data.split("<--score-->")[0];
+                    console.log("score="+score);
+                    $("#tweets").val($("#tweets").val() + data);
+                }
             });
         }
     }, 100);
